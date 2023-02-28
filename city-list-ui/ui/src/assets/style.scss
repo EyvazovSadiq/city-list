@@ -1,0 +1,50 @@
+* {
+	font-family: sans-serif;
+}
+
+.cities {
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	&__search {
+		width: 100%;
+		margin: auto;
+		margin-top: 3%;
+
+		form {
+			width: 50%;
+			margin: auto;
+			button {
+				margin-left: 5px;
+			}
+		}
+	}
+
+	&__item {
+		width: 20%;
+		height: 100%;
+		box-shadow: 3px 3px 5px 5px rgb(136 136 136 / 25%);
+		border-bottom-right-radius: 10px;
+		margin: 2%;
+			
+		img {
+			width: 100%;
+			height: 30vh;
+			max-height: 200px;
+			object-fit: cover;
+		}
+	
+		.content{
+			padding: 4%;
+		}
+	}
+}
+
+input[type="file"]{
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}

@@ -1,0 +1,9 @@
+FROM maven:3.8.3-openjdk-17 AS builder
+WORKDIR /app/src
+COPY . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17-alpine AS production
+COPY --from=builder /app/src/target/city-list-service-1.0.0.jar /city-list-service.jar
+EXPOSE 8080
+CMD ["java", "-jar", "city-list-service.jar"]

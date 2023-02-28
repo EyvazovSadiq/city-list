@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: city-list
+  datasource:
+    url: jdbc:tc:mysql:8:///city_list
+    username: user
+    password: password
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
+wikimedia-api-properties:
+  read-timeout: 25000
+  connection-timeout: 3000
+  user-agent: city-demo-app/spring-app
+  auth-token: token

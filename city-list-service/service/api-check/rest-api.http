@@ -1,0 +1,40 @@
+### [1] *** HEALTH_CHECK ***
+GET http://localhost:8080/healthcheck
+
+### [2] *** SAVE ALL CITIES ***
+POST http://localhost:8080/city-list/save-all
+Content-Type: application/json
+Accept: application/json
+
+{
+  "cities": [
+    {
+      "name": "Tallinn",
+      "picturePath": "path/to/tallinn"
+    },
+    {
+      "name": "Parnu",
+      "picturePath": "path/to/parnu"
+    }
+  ]
+}
+
+### [3] *** UPDATE CITY ***
+PUT http://localhost:8080/city-list/update
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "name": "Tallinn",
+  "picturePath": "new-path/to/tallinn"
+}
+
+### [3] *** GET CITIES ***
+GET http://localhost:8080/city-list/get?page=1
+Accept: application/json
+
+### [3] *** GET CITIES BY NAME ***
+GET http://localhost:8080/city-list/search?page=1&name=tallinn
+Accept: application/json
+

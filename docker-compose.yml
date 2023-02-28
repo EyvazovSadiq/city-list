@@ -1,0 +1,41 @@
+version: "3.1"
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_DATABASE: city_list
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: Password1
+    ports:
+      - "3306:3306"
+    restart: on-failure
+
+  city-list-service:
+    depends_on:
+      - mysql-db
+    image: city-list-service
+    container_name: city-list-service
+    build:
+      context: city-list-service/service
+      dockerfile: Dockerfile-service
+    environment:
+      DATABASE_HOST: mysql-db
+    ports:
+      - "8080:8080"
+    restart: on-failure
+
+  city-list-ui:
+    depends_on:
+      - mysql-db
+      - city-list-service
+    image: city-list-ui
+    container_name: city-list-ui
+    build:
+      context: city-list-ui/ui
+      dockerfile: Dockerfile-ui
+    ports:
+      - "3000:3000"
+    restart: on-failure

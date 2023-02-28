@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: city-list
+  datasource:
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 50
+    url: jdbc:mysql://${DATABASE_HOST:localhost}:3306/city_list
+    username: user
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
+server:
+  port: 8080
+  jetty:
+    threads:
+      idle-timeout: 1000
+      max: 30
+      min: 10
+
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: health
+      base-path: /
+      path-mapping:
+        health: healthcheck
+
+wikimedia-api-properties:
+  read-timeout: 25000
+  connection-timeout: 3000
+  # Authenticate the user to have higher Rate Limit for API calls
+  user-agent: city-demo-app/spring-app
+  auth-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJhZGY3NmU5YWU1NWYyMmI2ZWY4YzY5ZjU1YTJjZGU2MSIsImp0aSI6IjIxZGQ0ZDdiNDFhZmYyYThmZDRhYzc2YmE5OTYzMWEwNTEwZTJiN2JkODk5MGYyMzMzODU4N2EwOGIyYmMxYjhjNjg0YjNlODgzYzY5M2FhIiwiaWF0IjoxNjc3MzE3MjQ5LjQ4MjI5MiwibmJmIjoxNjc3MzE3MjQ5LjQ4MjI5NSwiZXhwIjozMzIzNDIyNjA0OS40ODA4Niwic3ViIjoiNzIxMDMwNjIiLCJpc3MiOiJodHRwczovL21ldGEud2lraW1lZGlhLm9yZyIsInJhdGVsaW1pdCI6eyJyZXF1ZXN0c19wZXJfdW5pdCI6NTAwMCwidW5pdCI6IkhPVVIifSwic2NvcGVzIjpbImJhc2ljIl19.DjbnX_PudIJA947NzAEme4kF5Z6OI6RLIZGUi9Vt_vRYE1XuyCc1XBsIDvpb3ULwZvf06ITqlqZ2agC9TCZphd9qQE7eKdG3lBiIdSGv013elbZoVnoz0QePKIMv8eoLd3L5lZ5a2SyV5LTqhqD4GqaSGkeOUXRW1bkDPC42zZNuQEaUCZY2vTzKI3o8DvOu3aIKnUgNYvcM9HasAK7L5Dap6MEh34FEvHh92ZBMvsFc7TSEaM2qxM7p2TGi-kzsc2XYTYy2Z0yOPP1VIfSkZuVAnGfy1EFdrnxMw97sqaTw8KYvWgCq7k4wWKx0LjfYBfypANeMGzFeiAE2Jioj9_eU2Bnw0lodMU1yGCw5ff1fa9H89C8h7sTOpRD20HyjCKx7A6tDUSpcwRv7bGHSBPMupXNiC0l0EPTjkkUKYlgSMeI6GtjnptjEzp7f3Ja3IfKKmbbbDJgTqcqTP0KUQr6IM-Vi6lLUeNaF5PatqN4b0wZL0meUKBLcx4y0MOa3Fm5j62BzFcTZKEfQ-eNe9c3tKu3mIYILybIrVJjOK2La4UYPB_jxjUVPuFKqINOoLB56h5evILmDIUW0wYEuYB9Oa-ltlF7v6AZU_ttUB-zEmbNJdoxLycc1hzDCoPh9U2eGOUNnwOI6V9kcIj3onvzLt6xSwCtvTsGHOfM_6Kw
+
